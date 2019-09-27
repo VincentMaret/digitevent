@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     getAllDates(e) {
-      // Launch event only on 'enter' key pressed
+      // proceed only on 'enter' key pressed
       if (e.keyCode != 13) return;
 
       let dates = $("#DateInput").val();

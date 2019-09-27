@@ -16,10 +16,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: path.resolve(SRC_PATH, 'index.js'),
+  entry: ['babel-polyfill', path.resolve(SRC_PATH, 'index.js')],
   output: {
     path: BUILD_PATH,
-    filename: "./script.js"
+    filename: './script.js'
   },
   resolve: {
     alias: {
