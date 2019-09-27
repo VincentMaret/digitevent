@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const SRC_PATH = path.resolve(__dirname, 'src');
 const STATIC_PATH = path.resolve(__dirname, 'public');
@@ -20,8 +21,18 @@ module.exports = {
     path: BUILD_PATH,
     filename: "./script.js"
   },
+  resolve: {
+    alias: {
+      srcAlias: SRC_PATH,
+      vue: 'vue/dist/vue.esm.js'
+    }
+  },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -77,14 +88,15 @@ module.exports = {
       jQuery: 'jquery'
     }),
     new HtmlWebpackPlugin({
-      title: 'Home',
+      title: 'Digitevent',
       template: path.resolve(STATIC_PATH, 'index.html')
     }),
     new CopyWebpackPlugin([{
       from: STATIC_PATH,
       to: BUILD_PATH,
       toType: 'dir'
-    }])
+    }]),
+    new VueLoaderPlugin()
   ],
   devServer: {
     contentBase: BUILD_PATH,
