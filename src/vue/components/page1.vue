@@ -5,7 +5,10 @@
       <input id="DateInput" type="text" />
 
       <ul>
-        <li v-for="(item, i) in dateResponse" v-bind:key="i">{{ item }}</li>
+        <li v-for="(item, i) in dateResponse" v-bind:key="i">
+          <h2>{{ item.req }}</h2>
+          <p>{{ item.res }}</p>
+        </li>
       </ul>
     </div>
   </div>
@@ -36,6 +39,7 @@ export default {
         })
       ).then(values => {
         // delete errors
+        console.log(values);
         this.dateResponse = values.filter(result => result != "err");
       });
     },
@@ -44,7 +48,8 @@ export default {
         method: "GET"
       });
       if (res.status == 200) {
-        return res.text();
+        const resTxt = await res.text();
+        return { req: date, res: resTxt };
       } else {
         return "err";
       }
