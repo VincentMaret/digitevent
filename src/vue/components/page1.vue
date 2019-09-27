@@ -16,7 +16,6 @@ export default {
   data() {
     return {
       numbersUrl: "http://numbersapi.com/{{date}}/date",
-      requestDates: undefined,
       dateResponse: []
     };
   },
