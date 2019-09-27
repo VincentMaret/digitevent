@@ -5,7 +5,7 @@
       <input id="DateInput" type="text" />
 
       <ul>
-        <li v-for="item in dateResponse">{{ item }}</li>
+        <li v-for="(item, i) in dateResponse" v-bind:key="i">{{ item }}</li>
       </ul>
     </div>
   </div>
