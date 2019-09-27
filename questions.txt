@@ -1,0 +1,39 @@
+1. In Js, What are the differences between == and === ?
+
+Both of them mean equal values. But === mean same type too. 
+Eg: '1' == 1 => true
+    '1' === 1 => false
+
+
+
+2. Look at the code below in Javascript, you have a for loop if you have setTimeout inside it.
+If log the loop counter inside setTimeout, what will be logged?
+for(let i = 0; i < 10; i++) {
+setTimeout(function() {
+console.log(i);
+}, 5000);
+}
+
+The counter will be log 10 times from 0 to 9 but with 5 seconds delay.
+
+
+3. Can you please give a few improvements brought by ES6 ?
+
+-Blocked-scoped variables, const and let
+-Arrow functions
+-Classes
+-String interpolation, eg `${foo} is a variable`
+-Promises for asynchronicity
+-async/await for async functions
+-import/export
+...
+
+
+4. What is Git stash made for ?
+
+Git stash is used to save local modifications away and reverts the working directory to match the head commit.
+It is usefull if you you want to work on another branch from a clean state but you don't want to  validate current work beacause it is dirty.
+
+
+5. Si vous étiez votre propre boss dans votre précédente expérience, quel “reproche” vous seriez-vous
+adressé ?
