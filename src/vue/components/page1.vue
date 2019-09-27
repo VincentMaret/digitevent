@@ -39,7 +39,7 @@ export default {
         this.dateResponse = values;
       });
     },
-    getDateInfo: function(date) {
+    getDateInfo(date) {
       const res = fetch(`http://numbersapi.com/${date}/date`, {
         method: "GET"
       });
