@@ -36,14 +36,19 @@ export default {
           return this.getDateInfo(date);
         })
       ).then(values => {
-        this.dateResponse = values;
+        // delete errors
+        this.dateResponse = values.filter(result => result != "err");
       });
     },
-    getDateInfo(date) {
-      const res = fetch(`http://numbersapi.com/${date}/date`, {
+    async getDateInfo(date) {
+      const res = await fetch(`http://numbersapi.com/${date}/date`, {
         method: "GET"
       });
-      return res.then(data => data.text());
+      if (res.status == 200) {
+        return res.text();
+      } else {
+        return "err";
+      }
     }
   }
 };
