@@ -17,7 +17,6 @@ export default {
     return {
       numbersUrl: "http://numbersapi.com/{{date}}/date",
       requestDates: undefined,
-      proccesedDatesResponse: [],
       dateResponse: []
     };
   },
@@ -26,6 +25,7 @@ export default {
   },
   methods: {
     getAllDates(e) {
+      // Launch event only on 'enter' key pressed
       if (e.keyCode != 13) return;
 
       let dates = $("#DateInput").val();
@@ -33,22 +33,17 @@ export default {
 
       Promise.all(
         dates.map(date => {
-          this.getDateInfo(date);
+          return this.getDateInfo(date);
         })
-      ).then(() => {
-        this.dateResponse = this.proccesedDatesResponse;
-        this.proccesedDatesResponse = [];
-        console.log(this.dateResponse);
+      ).then(values => {
+        this.dateResponse = values;
       });
     },
     getDateInfo: function(date) {
-      const url = this.numbersUrl.replace("{{date}}", date);
-      const res = fetch(url, { method: "GET" });
-      res
-        .then(data => data.text())
-        .then(data => {
-          this.proccesedDatesResponse.push(data);
-        });
+      const res = fetch(`http://numbersapi.com/${date}/date`, {
+        method: "GET"
+      });
+      return res.then(data => data.text());
     }
   }
 };
