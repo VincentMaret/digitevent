@@ -42,6 +42,8 @@ export default {
 
       let dates = $("#DateInput").val();
       dates = dates.split(",");
+      dates = dates.map(x => x.trim());
+      console.log(dates);
 
       // fetch all requests
       Promise.all(
