@@ -8,7 +8,7 @@
     <div>
       <h2>A MOMENT OF HISTORY</h2>
       <p
-        v-if="dateResponse.length"
+        v-if="dateResponse.length || dateErrors.length"
       >You entered {{ dateResponse.length + dateErrors.length }} dates...</p>
       <p
         v-if="dateErrors.length"
@@ -43,7 +43,6 @@ export default {
       let dates = $("#DateInput").val();
       dates = dates.split(",");
       dates = dates.map(x => x.trim());
-      console.log(dates);
 
       // fetch all requests
       Promise.all(
@@ -57,9 +56,7 @@ export default {
       });
     },
     async getDateInfo(date) {
-      const res = await fetch(`http://numbersapi.com/${date}/date`, {
-        method: "GET"
-      });
+      const res = await fetch(`http://numbersapi.com/${date}/date`);
       if (res.status == 200) {
         const resTxt = await res.text();
         return { req: date, res: resTxt };
