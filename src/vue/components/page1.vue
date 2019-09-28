@@ -3,14 +3,24 @@
     <div class="date-input-container">
       <h2>Please enter dates separated by commas:</h2>
       <input id="DateInput" type="text" />
-
-      <ul>
-        <li v-for="(item, i) in dateResponse" v-bind:key="i">
-          <h2>{{ item.req }}</h2>
-          <p>{{ item.res }}</p>
-        </li>
-      </ul>
     </div>
+
+    <div>
+      <h2>A MOMENT OF HISTORY</h2>
+      <p
+        v-if="dateResponse.length"
+      >You entered {{ dateResponse.length + dateErrors.length }} dates...</p>
+      <p
+        v-if="dateErrors.length"
+      >but {{ dateErrors.length }} {{ dateErrors.length == 1 ? 'was' : 'were' }} unsuccessfull.</p>
+    </div>
+
+    <ul>
+      <li v-for="(item, i) in dateResponse" v-bind:key="i">
+        <h2>{{ item.req }}</h2>
+        <p>{{ item.res }}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -18,8 +28,8 @@
 export default {
   data() {
     return {
-      numbersUrl: "http://numbersapi.com/{{date}}/date",
-      dateResponse: []
+      dateResponse: [],
+      dateErrors: []
     };
   },
   mounted() {
@@ -33,14 +43,15 @@ export default {
       let dates = $("#DateInput").val();
       dates = dates.split(",");
 
+      // fetch all requests
       Promise.all(
         dates.map(date => {
           return this.getDateInfo(date);
         })
       ).then(values => {
         // delete errors
-        console.log(values);
-        this.dateResponse = values.filter(result => result != "err");
+        this.dateResponse = values.filter(result => result.res != "err");
+        this.dateErrors = values.filter(result => result.res === "err");
       });
     },
     async getDateInfo(date) {
@@ -51,7 +62,7 @@ export default {
         const resTxt = await res.text();
         return { req: date, res: resTxt };
       } else {
-        return "err";
+        return { req: date, res: "err" };
       }
     }
   }
