@@ -1,23 +1,25 @@
 <template>
-  <div>
-    <div class="date-input-container">
-      <h2>Please enter dates separated by commas:</h2>
-      <input id="DateInput" type="text" />
-    </div>
-
+  <div id="Page1">
     <div>
-      <h2>A MOMENT OF HISTORY</h2>
-      <p
-        v-if="dateResponse.length || dateErrors.length"
-      >You entered {{ dateResponse.length + dateErrors.length }} dates...</p>
-      <p
-        v-if="dateErrors.length"
-      >but {{ dateErrors.length }} {{ dateErrors.length == 1 ? 'was' : 'were' }} unsuccessfull.</p>
+      <div class="date-input-container">
+        <p>Please enter dates separated by commas:</p>
+        <input id="DateInput" type="text" />
+      </div>
+
+      <div class="user-info-message-container">
+        <div v-if="dateResponse.length || dateErrors.length">
+          <h2>A MOMENT OF HISTORY</h2>
+          <p>You entered {{ dateResponse.length + dateErrors.length }} dates...</p>
+          <p
+            v-if="dateErrors.length"
+          >but {{ dateErrors.length }} {{ dateErrors.length == 1 ? 'was' : 'were' }} unsuccessfull.</p>
+        </div>
+      </div>
     </div>
 
     <ul>
       <li v-for="(item, i) in dateResponse" v-bind:key="i">
-        <h2>{{ item.req }}</h2>
+        <h3>{{ item.req }}</h3>
         <p>{{ item.res }}</p>
       </li>
     </ul>
@@ -70,4 +72,54 @@ export default {
 
 <style lang="less" scoped>
 @import "~srcAlias/less/config.less";
+
+#Page1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-input-container {
+  text-align: center;
+  background: @lightBlue;
+  padding-top: 50px;
+  width: 40vw;
+  p {
+    margin-bottom: 10px;
+  }
+}
+
+#DateInput {
+  background: transparent;
+  border-bottom: 1px solid black;
+  width: 50%;
+  text-align: center;
+  color: @flatBlue;
+  font-weight: 900;
+}
+
+.user-info-message-container {
+  background: linear-gradient(170deg, @lightBlue 30%, transparent 30.5%);
+  width: 100%;
+  height: 200px;
+  position: relative;
+  & > div {
+    background: @black;
+    color: @lightTxt;
+    position: absolute;
+    text-align: center;
+    padding: 30px 0;
+    width: 50%;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    h2 {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    p {
+      font-weight: 900;
+    }
+  }
+}
 </style>
