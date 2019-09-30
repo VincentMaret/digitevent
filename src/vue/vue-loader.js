@@ -8,7 +8,7 @@ import Page2 from 'srcAlias/vue/components/page2.vue';
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: Page1 },
+  { path: '/', name: 'page1', component: Page1 },
   { path: '/page2', name: 'page2', component: Page2, props: true }
 ];
 
