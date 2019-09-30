@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: Page1 },
-  { path: '/page2', component: Page2 }
+  { path: '/page2', name: 'page2', component: Page2, props: true }
 ];
 
 const router = new VueRouter({

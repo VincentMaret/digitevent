@@ -1,5 +1,9 @@
 <template>
   <div id="Page1">
+    <nav>
+      <a id="LinkToPage2" @click="goToPage2">Past results</a>
+    </nav>
+
     <div>
       <div class="date-input-container">
         <p>Please enter dates separated by commas:</p>
@@ -39,7 +43,8 @@ export default {
   data() {
     return {
       dateResponse: [],
-      dateErrors: []
+      dateErrors: [],
+      pastRequests: []
     };
   },
   mounted() {
@@ -60,6 +65,7 @@ export default {
     unsetRequestEvent() {
       $("#DateInput").off("keypress");
     },
+
     //----------------------------------------
     // Manage http requests-------------------
     //----------------------------------------
@@ -92,10 +98,12 @@ export default {
 
       // build responses arrays
       // value model: {req: STRING, res: STRING}
-      // create an array of successful values
+      // create an array of successfull values
       this.dateResponse = values.filter(result => result.res != "err");
       // create an array of errors
       this.dateErrors = values.filter(result => result.res === "err");
+      // save successfull values
+      this.pastRequests = this.pastRequests.concat(this.dateResponse);
     },
     async getDateInfo(date) {
       const res = await fetch(`http://numbersapi.com/${date}/date`);
@@ -111,6 +119,14 @@ export default {
     resetArrays() {
       this.dateResponse = [];
       this.dateErrors = [];
+    },
+    goToPage2() {
+      this.$router.push({
+        name: "page2",
+        params: {
+          pastRequests: this.pastRequests
+        }
+      });
     }
   }
 };
@@ -179,5 +195,12 @@ ul {
     width: 50%;
     margin: auto;
   }
+}
+
+nav {
+  position: fixed;
+  top: @spacing2;
+  right: @spacing2;
+  cursor: pointer;
 }
 </style>
