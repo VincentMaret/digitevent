@@ -107,9 +107,9 @@ export default {
 }
 
 .user-info-message-container {
-  background: linear-gradient(170deg, @lightBlue 30%, transparent 30.5%);
+  background: linear-gradient(170deg, @lightBlue 56%, transparent 56.5%);
   width: 100%;
-  height: 200px;
+  height: 115px;
   position: relative;
   & > div {
     background: @black;
@@ -118,7 +118,7 @@ export default {
     text-align: center;
     padding: 30px 0;
     width: 50%;
-    top: 10%;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     h2 {
