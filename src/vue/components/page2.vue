@@ -5,10 +5,10 @@
     </nav>
     <table>
       <tr>
-        <th>Past Results</th>
+        <th scope="col">DATE</th>
       </tr>
       <tr v-for="(item, i) in pastRequests" v-bind:key="i">
-        <th>{{ item.req }}</th>
+        <th scope="row">{{ item.req }}</th>
         <td>{{ item.res }}</td>
       </tr>
     </table>
@@ -36,5 +36,34 @@ nav {
   top: @spacing2;
   right: @spacing2;
   cursor: pointer;
+}
+
+td,
+th {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px;
+}
+td {
+  text-align: center;
+}
+tr:nth-child(even) {
+  background-color: #eee;
+}
+th {
+  &[scope="col"] {
+    background-color: #696969;
+    color: #fff;
+  }
+  &[scope="row"] {
+    background-color: #d7d9f2;
+  }
+}
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  background: white;
 }
 </style>
