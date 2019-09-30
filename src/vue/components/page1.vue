@@ -82,16 +82,10 @@ export default {
       // unset event
       this.unsetRequestEvent();
 
-      // build request
-      dates = dates.split(",");
-      dates = dates.map(x => x.trim());
-
-      // fetch all requests
-      const values = await Promise.all(
-        dates.map(date => {
-          return this.getDateInfo(date);
-        })
-      );
+      // fetch request
+      let values = await fetch(`http://localhost:3000?dates=${dates}`);
+      values = await values.json();
+      values = values.result;
 
       // reset event
       this.setRequestEvent();
@@ -104,15 +98,6 @@ export default {
       this.dateErrors = values.filter(result => result.res === "err");
       // save successfull values
       this.pastRequests = this.pastRequests.concat(this.dateResponse);
-    },
-    async getDateInfo(date) {
-      const res = await fetch(`http://numbersapi.com/${date}/date`);
-      if (res.status == 200) {
-        const resTxt = await res.text();
-        return { req: date, res: resTxt };
-      } else {
-        return { req: date, res: "err" };
-      }
     },
     //----------------------------------------
     //----------------------------------------
