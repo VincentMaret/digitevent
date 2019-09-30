@@ -1,15 +1,19 @@
 <template>
   <div>
-    <page1></page1>
+    <navigation></navigation>
+    <!-- <page1></page1> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import page1 from "srcAlias/vue/components/page1.vue";
+import Navigation from "srcAlias/vue/components/menu.vue";
+import Page1 from "srcAlias/vue/components/page1.vue";
 
 export default {
   components: {
-    page1
+    Navigation,
+    Page1
   }
 };
 </script>
