@@ -12,14 +12,14 @@ const SRC_PATH = path.resolve(__dirname, 'src');
 const STATIC_PATH = path.resolve(__dirname, 'public');
 const BUILD_PATH = path.resolve(__dirname, 'dist');
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: ['babel-polyfill', path.resolve(SRC_PATH, 'index.js')],
   output: {
     path: BUILD_PATH,
-    filename: './script.js'
+    filename: './script.min.js'
   },
   resolve: {
     alias: {
