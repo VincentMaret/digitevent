@@ -3,6 +3,7 @@
     <nav>
       <router-link to="/">Home</router-link>
     </nav>
+    <!-- Build table with past requests -->
     <table>
       <tr>
         <th scope="col">DATE</th>
@@ -20,11 +21,7 @@ export default {
   props: ["pastRequests"],
   data() {
     return {};
-  },
-  mounted() {
-    console.log(this.$router);
-  },
-  methods: {}
+  }
 };
 </script>
 
