@@ -87,7 +87,7 @@ export default {
         `https://digitevent-api.herokuapp.com/?dates=${dates}`
       );
       values = await values.json();
-      values = values.result;
+      values = values.data;
 
       // reset event
       this.setRequestEvent();
@@ -126,7 +126,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(188deg, @blue 28%, @red 28.3%, black);
+  background: linear-gradient(188deg, @blue 28vh, @red 28.3vh, black);
   min-height: 100vh;
 }
 
@@ -134,7 +134,10 @@ export default {
   text-align: center;
   background: @lightBlue;
   padding-top: 50px;
-  width: 40vw;
+  width: @mainContentWidthMedium;
+  @media screen and (max-width: @bpSm) {
+    width: @mainContentWidthLarge;
+  }
   p {
     margin-bottom: 10px;
   }
@@ -150,7 +153,7 @@ export default {
 }
 
 .user-info-message-container {
-  background: linear-gradient(170deg, @lightBlue 56%, transparent 56.5%);
+  background: linear-gradient(170deg, @lightBlue 109px, transparent 110px);
   width: 100%;
   height: 115px;
   position: relative;
@@ -168,6 +171,13 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media screen and (max-width: @bpSm) {
+      width: 80%;
+      & > li {
+        width: 80%;
+        margin: auto;
+      }
+    }
     h2 {
       font-size: 1rem;
       font-weight: 500;
@@ -179,10 +189,16 @@ export default {
 }
 
 ul {
-  width: 40vw;
+  width: @mainContentWidthMedium;
   & > li {
     width: 50%;
     margin: auto;
+  }
+  @media screen and (max-width: @bpSm) {
+    width: @mainContentWidthLarge;
+    & > li {
+      width: 80%;
+    }
   }
 }
 

@@ -67,5 +67,6 @@ table {
   letter-spacing: 1px;
   font-family: sans-serif;
   font-size: 0.8rem;
+  width: 100%;
 }
 </style>
