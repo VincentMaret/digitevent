@@ -17,6 +17,8 @@
 </template>
 
 <script>
+"use strict";
+
 export default {
   props: ["pastRequests"],
   data() {

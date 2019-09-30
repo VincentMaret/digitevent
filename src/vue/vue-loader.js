@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
 
+"use strict";
+
 import App from 'srcAlias/vue/app.vue';
 import Page1 from 'srcAlias/vue/components/page1.vue';
 import Page2 from 'srcAlias/vue/components/page2.vue';

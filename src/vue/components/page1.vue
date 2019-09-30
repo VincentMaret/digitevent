@@ -34,6 +34,7 @@
 </template>
 
 <script>
+"use strict";
 import card from "srcAlias/vue/components/card.vue";
 
 export default {
