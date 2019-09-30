@@ -43,27 +43,31 @@ export default {
     };
   },
   mounted() {
-    $("#DateInput").on("keypress", this.getAllDates);
-  },
-  methods: {
-    getAllDates(e) {
+    $("#DateInput").on("keypress", e => {
       // proceed only on 'enter' key pressed
       if (e.keyCode != 13) return;
 
+      this.getAllDates();
+    });
+  },
+  methods: {
+    async getAllDates() {
       let dates = $("#DateInput").val();
       dates = dates.split(",");
       dates = dates.map(x => x.trim());
 
       // fetch all requests
-      Promise.all(
+      const values = await Promise.all(
         dates.map(date => {
           return this.getDateInfo(date);
         })
-      ).then(values => {
-        // delete errors
-        this.dateResponse = values.filter(result => result.res != "err");
-        this.dateErrors = values.filter(result => result.res === "err");
-      });
+      );
+      // build responses arrays
+      // value model: {req: STRING, res: STRING}
+      // create an array of successful values
+      this.dateResponse = values.filter(result => result.res != "err");
+      // create an array of errors
+      this.dateErrors = values.filter(result => result.res === "err");
     },
     async getDateInfo(date) {
       const res = await fetch(`http://numbersapi.com/${date}/date`);
