@@ -37,3 +37,62 @@ It is usefull if you you want to work on another branch from a clean state but y
 
 5. Si vous étiez votre propre boss dans votre précédente expérience, quel “reproche” vous seriez-vous
 adressé ?
+En tant qu'alternant, je ne me sentais pas forcément légitime à prendre des initiatives ce qui je pense à dû me porter préjudice.
+
+--------------------------------------------------
+Réponses au questionnaire de fin
+
+Q1 => corriger du code
+Moyenne: 60
+Appréciation:70
+
+Q2 => Relire/tester mon code
+Moyenne: 80
+Appréciation: 100
+
+Q3 => Travailler en équipe
+Moyenne: 20
+Appréciation: 60?
+explications: j'ai toujours travaillé sur des projets solo dans mes expériences professionnelles. J'ai récupéré des projets, mais je n'ai jamais travaillé en collaboration sauf dans le cadre de projets scolaires.
+              C'est une carence que je souhaite combler. 
+
+Q4 => Comprendre les enjeux business du produit
+Moyenne: 70
+Appréciation: 100
+
+Q5 => Gérer la complexité du code
+Moyenne: 65
+Appréciation: 90
+
+Q5 => Trouver une réponse simple à un problème compliqué
+Moyenne: 60
+Appréciation: 100
+
+Q6 => Capacité à comprendre une doc
+Moyenne: 90
+Appréciation: 80
+
+Q7 => Capacité à comprendre une nouvelle technique
+Moyenne: 70
+Appréciation: 100
+
+Q8 => Débugger un code existant
+Moyenne: 90
+Appréciation: 70
+
+Q9 => Capacité de leadership
+Moyenne: 40
+Appréciation: 60
+
+Q10 => Gestion du multitasking
+Moyenne: 20
+Appréciation: 20
+
+Q11 => Gestion du stress
+Moyenne: 30
+Appréciation: 70
+
+Il n'y a aucune de ces tâches dont je ne souhaite pas assumer la responsabilité, et en particulier celle que je maîtrise le moins.
+
+
+
