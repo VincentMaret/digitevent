@@ -1,7 +1,11 @@
 @import '~srcAlias/less/config.less';
-body, h1, h2, h3, h4, h5, h6, p {
+body, h1, h2, h3, h4, h5, h6, p, ul {
   margin: 0;
   padding: 0;
+}
+
+ul {
+  list-style: none;
 }
 
 html {
@@ -10,7 +14,7 @@ html {
 
 body {
   background: linear-gradient(188deg, @blue 28%, @red 28%, black);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 input {

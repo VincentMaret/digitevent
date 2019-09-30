@@ -18,16 +18,24 @@
     </div>
 
     <ul>
-      <li v-for="(item, i) in dateResponse" v-bind:key="i">
-        <h3>{{ item.req }}</h3>
-        <p>{{ item.res }}</p>
-      </li>
+      <!-- card root element is li -->
+      <card
+        v-for="(item, i) in dateResponse"
+        v-bind:key="i"
+        v-bind:title="item.req"
+        v-bind:content="item.res"
+      ></card>
     </ul>
   </div>
 </template>
 
 <script>
+import card from "srcAlias/vue/components/card.vue";
+
 export default {
+  components: {
+    card
+  },
   data() {
     return {
       dateResponse: [],
@@ -120,6 +128,14 @@ export default {
     p {
       font-weight: 900;
     }
+  }
+}
+
+ul {
+  width: 40vw;
+  & > li {
+    width: 50%;
+    margin: auto;
   }
 }
 </style>
