@@ -52,7 +52,16 @@ export default {
   },
   methods: {
     async getAllDates() {
+      // get dates
       let dates = $("#DateInput").val();
+
+      // reset response arrays if no date
+      if (!dates) {
+        this.resetArrays();
+        return;
+      }
+
+      //build request
       dates = dates.split(",");
       dates = dates.map(x => x.trim());
 
@@ -77,6 +86,10 @@ export default {
       } else {
         return { req: date, res: "err" };
       }
+    },
+    resetArrays() {
+      this.dateResponse = [];
+      this.dateErrors = [];
     }
   }
 };
@@ -120,11 +133,15 @@ export default {
     color: @lightTxt;
     position: absolute;
     text-align: center;
-    padding: 30px 0;
+    height: 90px;
     width: 50%;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     h2 {
       font-size: 1rem;
       font-weight: 500;
