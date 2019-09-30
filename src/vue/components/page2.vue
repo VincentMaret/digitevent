@@ -36,6 +36,9 @@ nav {
   top: @spacing2;
   right: @spacing2;
   cursor: pointer;
+  a {
+    color: black;
+  }
 }
 
 td,
@@ -64,6 +67,5 @@ table {
   letter-spacing: 1px;
   font-family: sans-serif;
   font-size: 0.8rem;
-  background: white;
 }
 </style>

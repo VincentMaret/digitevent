@@ -139,6 +139,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: linear-gradient(188deg, @blue 28%, @red 28.3%, black);
+  min-height: 100vh;
 }
 
 .date-input-container {
@@ -202,5 +204,6 @@ nav {
   top: @spacing2;
   right: @spacing2;
   cursor: pointer;
+  color: @lightTxt;
 }
 </style>
