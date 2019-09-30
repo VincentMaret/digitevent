@@ -148,7 +148,7 @@ export default {
   border-bottom: 1px solid black;
   width: 50%;
   text-align: center;
-  color: @flatBlue;
+  color: @flatBlue !important;
   font-weight: 900;
 }
 
