@@ -83,7 +83,9 @@ export default {
       this.unsetRequestEvent();
 
       // fetch request
-      let values = await fetch(`http://localhost:3000?dates=${dates}`);
+      let values = await fetch(
+        `https://digitevent-api.herokuapp.com/?dates=${dates}`
+      );
       values = await values.json();
       values = values.result;
 
