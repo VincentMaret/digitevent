@@ -43,14 +43,26 @@ export default {
     };
   },
   mounted() {
-    $("#DateInput").on("keypress", e => {
-      // proceed only on 'enter' key pressed
-      if (e.keyCode != 13) return;
-
-      this.getAllDates();
-    });
+    this.setRequestEvent();
   },
   methods: {
+    //----------------------------------------
+    // Manage events--------------------------
+    //----------------------------------------
+    setRequestEvent() {
+      $("#DateInput").on("keypress", e => {
+        // proceed only on 'enter' key pressed
+        if (e.keyCode != 13) return;
+
+        this.getAllDates();
+      });
+    },
+    unsetRequestEvent() {
+      $("#DateInput").off("keypress");
+    },
+    //----------------------------------------
+    // Manage http requests-------------------
+    //----------------------------------------
     async getAllDates() {
       // get dates
       let dates = $("#DateInput").val();
@@ -61,7 +73,10 @@ export default {
         return;
       }
 
-      //build request
+      // unset event
+      this.unsetRequestEvent();
+
+      // build request
       dates = dates.split(",");
       dates = dates.map(x => x.trim());
 
@@ -71,6 +86,10 @@ export default {
           return this.getDateInfo(date);
         })
       );
+
+      // reset event
+      this.setRequestEvent();
+
       // build responses arrays
       // value model: {req: STRING, res: STRING}
       // create an array of successful values
@@ -87,6 +106,8 @@ export default {
         return { req: date, res: "err" };
       }
     },
+    //----------------------------------------
+    //----------------------------------------
     resetArrays() {
       this.dateResponse = [];
       this.dateErrors = [];
