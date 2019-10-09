@@ -10,7 +10,11 @@ app.use(function (req, res, next) {
 app.set('port', process.env.PORT || 3000);
 
 app.get('/', (req, res) => {
-  res.send('An alligator approaches!');
+  res.sendFile(__dirname + '/dist/index.html', function (err) {
+    if (err) {
+      next(err);
+    }
+  });
 });
 
 app.listen(app.get('port'), function () {
